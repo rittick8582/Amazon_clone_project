@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amazon Clone - Home</title>
+<style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    color: #111;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  /* Header */
+  header {
+    background-color: #131921;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header .logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    color: #ff9900;
+    margin-right: 20px;
+    user-select: none;
+  }
+  header .search-bar {
+    flex: 1;
+    display: flex;
+  }
+  header .search-bar input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    font-size: 16px;
+  }
+  header .search-bar button {
+    background-color: #febd69;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  header .nav-links {
+    display: flex;
+    margin-left: 20px;
+    gap: 20px;
+  }
+  header .nav-links div {
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  header .nav-links div span {
+    display: block;
+    font-weight: 700;
+  }
+
+  /* Nav bar categories */
+  nav.categories {
+    background-color: #232f3e;
+    color: white;
+    font-size: 14px;
+    padding: 8px 20px;
+    display: flex;
+    overflow-x: auto;
+  }
+  nav.categories a {
+    margin-right: 20px;
+    white-space: nowrap;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  nav.categories a:hover {
+    background-color: #37475a;
+  }
+
+  /* Hero banner */
+  .hero {
+    background: url('https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_1x._CB432458380_.jpg') no-repeat center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 0 40px;
+    color: white;
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 0.7);
+  }
+  .hero-content {
+    max-width: 450px;
+  }
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+  .hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 24px;
+  }
+  .hero-content button {
+    background-color: #febd69;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  .hero-content button:hover {
+    background-color: #f3a847;
+  }
+
+  /* Product grid */
+  .products-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  .products-section h2 {
+    margin-bottom: 24px;
+    font-size: 2rem;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 24px;
+  }
+  .product-card {
+    background-color: white;
+    border-radius: 6px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    box-shadow: 0 6px 16px rgb(0 0 0 / 0.15);
+  }
+  .product-card img {
+    max-width: 100%;
+    max-height: 180px;
+    margin-bottom: 12px;
+    object-fit: contain;
+    align-self: center;
+  }
+  .product-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    flex-grow: 1;
+  }
+  .product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #b12704;
+    margin-bottom: 8px;
+  }
+  .product-rating {
+    color: #f0c14b;
+    font-size: 0.9rem;
+  }
+  .star {
+    margin-right: 2px;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #131921;
+    color: #ddd;
+    padding: 20px 40px;
+    font-size: 14px;
+  }
+  footer .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  footer .footer-column {
+    min-width: 150px;
+  }
+  footer .footer-column h3 {
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  footer .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  footer .footer-column ul li {
+    margin-bottom: 8px;
+  }
+  footer .footer-column ul li a {
+    color: #ddd;
+    transition: color 0.2s ease;
+  }
+  footer .footer-column ul li a:hover {
+    color: #ff9900;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    header .nav-links {
+      display: none;
+    }
+    .hero {
+      height: 250px;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo" aria-label="Amazon Clone Logo">amazon</div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search Amazon" aria-label="Search Amazon" />
+    <button aria-label="Search">
+      🔍
+    </button>
+  </div>
+  <nav class="nav-links" aria-label="User Navigation">
+    <div>
+      <span>Hello, Sign in</span>
+      Account & Lists
+    </div>
+    <div>
+      <span>Returns</span>
+      & Orders
+    </div>
+    <div>
+      <span>Cart</span>
+      🛒
+    </div>
+  </nav>
+</header>
+
+<nav class="categories" aria-label="Main Categories">
+  <a href="#">All</a>
+  <a href="#">Prime Video</a>
+  <a href="#">Amazon Business</a>
+  <a href="#">Today's Deals</a>
+  <a href="#">Electronics</a>
+  <a href="#">Food & Grocery</a>
+  <a href="#">Prime</a>
+  <a href="#">Buy Again</a>
+  <a href="#">Shopper Toolkit</a>
+  <a href="#">Health & Personal Care</a>
+</nav>
+
+<section class="hero" role="banner" aria-label="Main promotional banner">
+  <div class="hero-content">
+    <h1>Find Everything You Need, All in One Place</h1>
+    <p>Shop deals on electronics, apparel, home goods, and more - delivered fast to your door.</p>
+    <button>Shop Now</button>
+  </div>
+</section>
+
+<section class="products-section" aria-label="Featured Products">
+  <h2>Featured Products</h2>
+  <div class="product-grid">
+    <article class="product-card" tabindex="0" aria-label="Echo Dot 4th Gen">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/61u48FEsKpL._AC_UL320_.jpg" alt="Echo Dot 4th Gen" />
+      <div class="product-title">Echo Dot (4th Gen) | Smart speaker with Alexa</div>
+      <div class="product-price">$49.99</div>
+      <div class="product-rating" aria-label="4.7 out of 5 stars">
+        <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span> (1,234)
+      </div>
+    </article>
+
+    <article class="product-card" tabindex="0" aria-label="Apple AirPods Pro">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/71U9NppfUmL._AC_UL320_.jpg" alt="Apple AirPods Pro" />
+      <div class="product-title">Apple AirPods Pro</div>
+      <div class="product-price">$199.99</div>
+      <div class="product-rating" aria-label="4.8 out of 5 stars">
+        <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span> (8,765)
+      </div>
+    </article>
+
+    <article class="product-card" tabindex="0" aria-label="Instant Pot Duo 7-in-1 Electric Pressure Cooker">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/71MmZ6brmhL._AC_UL320_.jpg" alt="Instant Pot Duo 7-in-1 Electric Pressure Cooker" />
+      <div class="product-title">Instant Pot Duo 7-in-1 Electric Pressure Cooker</div>
+      <div class="product-price">$89.99</div>
+      <div class="product-rating" aria-label="4.6 out of 5 stars">
+        <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span>☆</span> (5,321)
+      </div>
+    </article>
+
+    <article class="product-card" tabindex="0" aria-label="Samsung 65-inch 4K Smart TV">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/91XbELCMDJL._AC_UL320_.jpg" alt="Samsung 65-inch 4K Smart TV" />
+      <div class="product-title">Samsung 65-inch 4K Smart TV</div>
+      <div class="product-price">$649.99</div>
+      <div class="product-rating" aria-label="4.5 out of 5 stars">
+        <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span><span>☆</span> (3,298)
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-column" aria-label="Get to Know Us">
+      <h3>Get to Know Us</h3>
+      <ul>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About Amazon</a></li>
+        <li><a href="#">Investor Relations</a></li>
+        <li><a href="#">Amazon Devices</a></li>
+      </ul>
+    </div>
+    <div class="footer-column" aria-label="Make Money with Us">
+      <h3>Make Money with Us</h3>
+      <ul>
+        <li><a href="#">Sell products on Amazon</a></li>
+        <li><a href="#">Sell on Amazon Business</a></li>
+        <li><a href="#">Sell apps on Amazon</a></li>
+        <li><a href="#">Become an Affiliate</a></li>
+        <li><a href="#">Advertise Your Products</a></li>
+      </ul>
+    </div>
+    <div class="footer-column" aria-label="Amazon Payment Products">
+      <h3>Amazon Payment Products</h3>
+      <ul>
+        <li><a href="#">Amazon Rewards Visa Signature Cards</a></li>
+        <li><a href="#">Amazon.com Store Card</a></li>
+        <li><a href="#">Amazon Business Card</a></li>
+        <li><a href="#">Amazon Secured Card</a></li>
+        <li><a href="#">Manage Your Cards</a></li>
+      </ul>
+    </div>
+    <div class="footer-column" aria-label="Let Us Help You">
+      <h3>Let Us Help You</h3>
+      <ul>
+        <li><a href="#">Amazon and COVID-19</a></li>
+        <li><a href="#">Your Account</a></li>
+        <li><a href="#">Your Orders</a></li>
+        <li><a href="#">Shipping Rates & Policies</a></li>
+        <li><a href="#">Returns & Replacements</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top: 20px; font-size: 12px; color: #666;">
+    &copy; 2024 Amazon Clone. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
+
